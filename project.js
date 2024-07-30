@@ -2,11 +2,11 @@
 //2. Determine number of lines to bet on
 //3. Collect a bet amount
 //4. Spin the slot machine
-//5. Check if the user won
-//6. Give the user their winnings
-//7. Play again
-
-//1. Deposit some money
+//5. Transpose the matrix
+//6. Display the matrix
+//7. Check if the user won
+//8. Give the user their winnings
+//9. Play again
 
 const prompt = require('prompt-sync')();
 
@@ -26,8 +26,7 @@ const SYMBOL_VALUES ={
     D:2
 };
 
-
-
+//1. Deposit some money
 
 const deposit = () =>{
     while(true){
@@ -91,10 +90,10 @@ const spin =()=>{
     }
 
 const reels=[];
-for (let i =0; i< COLS;i++){
+for (let i =0; i< COLS; i++){
     reels.push([]);
     const reelSymbols=[...symbols];
-    for(let j=0;j<ROWS;j++){
+    for(let j=0; j<ROWS; j++){
         const randomIndex= Math.floor(Math.random()* reelSymbols.length);
         const selectedSymbol = reelSymbols[randomIndex];
         reels[i].push(selectedSymbol);
@@ -103,8 +102,44 @@ for (let i =0; i< COLS;i++){
     }
 } return reels;
 };
-const reels =spin();
-console.log(reels);
+
+
+//5. Transpose the matrix
+ const Transpose = (reels) => {
+    const rows =[];
+    for (let i=0; i<ROWS; i++){
+        rows.push([]);
+        for(let j=0; j< COLS; j++)
+        {
+            rows[i].push(reels[j][i]);
+        }
+
+    }
+    return rows;
+ }
+
+//6. Display the matrix
+ const  printRows =(rows)=>{
+    for (const row of rows){
+        let rowString ="";
+        for (const [i, symbol] of row.entries()){
+            rowString+= symbol;
+            if(i != row.length -1)
+            {
+                rowString += " | " ;
+            }
+        }
+        console.log(rowString);
+    }
+ }
+
+//7. Check if the user won
 let balance = deposit(); //let instead of const so later on i can change the amount based on the bet
 const NumberOfLines = getNumberOfLines();
 const bet = getBet(balance,NumberOfLines);
+const reels =spin();
+const rows = Transpose(reels);
+printRows(rows);
+
+
+
