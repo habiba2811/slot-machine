@@ -133,13 +133,34 @@ for (let i =0; i< COLS; i++){
     }
  }
 
-//7. Check if the user won
+//7. Check if the user won'
+
+const getWinnings=(rows, bet, lines) =>{
+let Winnings=0;
+for(let row=0; row<lines;row++){
+    const symbols = rows[row];
+    let allSame = true;
+
+    for (const symbol of symbols){
+        if (symbol != symbols[0]){
+            allSame = false;
+            break;
+        }
+    }
+    if (allSame){
+        Winnings += bet* SYMBOL_VALUES[symbols[0]];
+    }
+}
+return Winnings;
+}
+
 let balance = deposit(); //let instead of const so later on i can change the amount based on the bet
 const NumberOfLines = getNumberOfLines();
 const bet = getBet(balance,NumberOfLines);
 const reels =spin();
 const rows = Transpose(reels);
 printRows(rows);
-
+const winnings = getWinnings(rows, bet, NumberOfLines);
+console.log("You won, $" +winnings.toString());
 
 
