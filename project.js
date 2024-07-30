@@ -154,13 +154,37 @@ for(let row=0; row<lines;row++){
 return Winnings;
 }
 
+//8. Give the user their winnings
+
+const game =()=>{
 let balance = deposit(); //let instead of const so later on i can change the amount based on the bet
+
+while(true){
+console.log("you have a balance of $"+balance);
 const NumberOfLines = getNumberOfLines();
 const bet = getBet(balance,NumberOfLines);
+balance -= bet*NumberOfLines;
 const reels =spin();
 const rows = Transpose(reels);
 printRows(rows);
 const winnings = getWinnings(rows, bet, NumberOfLines);
+balance +=winnings;
 console.log("You won, $" +winnings.toString());
+
+if (balance <=0){
+    console.log("you ran out of money!");
+    break;
+}
+
+//9. Play again
+
+const playAgain = prompt("Do you want to play again? (y/n)")
+if (playAgain != "y")
+    break;
+
+}
+};
+
+game();
 
 
