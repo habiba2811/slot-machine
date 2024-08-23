@@ -22,17 +22,6 @@ This project is a simple console-based slot machine game developed using JavaScr
 
 - To win, all symbols on a line must match. The winnings are calculated by multiplying the bet per line by the symbol's value.
 
-## Running the Game
-
-1. **Install Dependencies**: The game uses the `prompt-sync` package for user input. Install it using npm:
-   ```
-   npm install prompt-sync
-   ```
-
-2. **Start the Game**: Run the game using Node.js:
-   ```
-   node project.js
-   ```
 
 ## Example
 
@@ -48,13 +37,6 @@ You won, $50
 Do you want to play again? (y/n)
 ```
 
-## License
-
-This project is licensed under the MIT License. Feel free to use, modify, and distribute as you wish.
-
-## Acknowledgements
-
-- The game logic and implementation were inspired by Tech With Tim.
 
 ## Contributing
 
