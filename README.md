@@ -36,10 +36,3 @@ You have a balance of $80
 You won, $50
 Do you want to play again? (y/n)
 ```
-
-
-## Contributing
-
-If you'd like to contribute to this project, feel free to fork the repository and submit a pull request. Any improvements or bug fixes are welcome!
-
----
